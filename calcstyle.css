@@ -60,31 +60,24 @@ button {
     transition: background-color 0.2s ease;
 }
 
+/* 버튼 클릭 시 동작 */
 button:active {
-    background-color: #d0d0d0;
+    background-color: #998fb8;
 }
 
+/* 사칙연산 버튼 */
 .operator {
     background-color: #ff9500;
-    color: white;
+    color: rgb(248, 244, 244);
 }
+
 
 .equal-sign {
     background-color: #00b894;
     color: white;
-    grid-column: span 2;
+    grid-column: span 2;  /* 레이아웃에서 2개의 열 차지 */
 }
 
-.paragraph{
-    background-color: rgb(161, 189, 239);
-    font-weight: bold;
-}
-
-.clear {
-    background-color: #ff3b30;
-    color: white;
-    grid-column: span 2;
-}
 
 button.zero {
     grid-column: span 2;
@@ -93,7 +86,7 @@ button.zero {
 .calc-label {
     text-align: center; /* 텍스트를 가운데 정렬 */
     font-size: 1.2rem; /* 적절한 글자 크기 설정 */
-    margin-top: 20px;  /* 계산기와 문구 사이의 여백 설정 */
+    margin-top: 40px;  /* 계산기와 문구 사이의 여백 설정 */
     color: #333; /* 텍스트 색상 */
     font-weight: bold;
     background-color: #afd0ed;
