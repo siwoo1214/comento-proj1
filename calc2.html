@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator with History</title>
+    <link rel="stylesheet" href="calcstyle2.css">
+</head>
+
+<body>
+    <div class="calculator">
+        <input type="text" class="calculator-screen" readonly>
+        <div class="calculator-keys">
+            <button type="button" class="operator">+</button>
+            <button type="button" class="operator">-</button>
+            <button type="button" class="operator">x</button>
+            <button type="button" class="operator">/</button>
+
+            <button type="button">1</button>
+            <button type="button">2</button>
+            <button type="button">3</button>
+            <button type="button">4</button>
+            <button type="button">5</button>
+            <button type="button">6</button>
+            <button type="button">7</button>
+            <button type="button">8</button>
+            <button type="button">9</button>
+
+            <button type="button" class="zero">0</button>
+            <button type="button" class="button-dot">.</button>
+
+            <button type="button" class="equal-sign">=</button>
+            <button type="button" class="clear">C</button>
+        </div>
+        <div class="history">
+            <h3>History</h3>
+            <ul class="history-list"></ul>
+        </div>
+    </div>
+</body>
+<script src="calc2.js"></script>
+</html>

@@ -1,0 +1,94 @@
+.container {
+    width: 600px;
+    height: 300px;
+    border: 1px solid #000;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+    text-align: center;
+    margin: 20px;
+}
+
+.battery-status {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border: 1px solid #000;
+    background-color: #e0e0e0;
+}
+
+.time-label {
+    position: absolute;
+    top: 70px;
+    left: 20px;
+    font-size: 16px;
+}
+
+.time-display {
+    position: absolute;
+    top: 60px;
+    left: 100px;
+    width: 360px;
+    height: 60px;
+    text-align: center;
+    line-height: 50px;
+    background-color: #e0e0e0;
+    border: 1px solid #000;
+    font-size: 16px;
+}
+
+.alarm-container {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    width: 100px;
+    height: 210px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.alarm-label {
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.alarm-status {
+    width: 100px;
+    height: 500px;
+    text-align: center;
+    background-color: #e0e0e0;
+    border: 1px solid #000;
+    margin-top: 10px;
+}
+
+.alarm-status div {
+    margin-bottom: 5px;
+}
+
+.alarm-settings {
+    position: absolute;
+    bottom: 20px;
+    left: 50px;
+    text-align: center;
+}
+
+.alarm-settings input {
+    height: 30px;
+    text-align: center;
+    margin-right: 5px;
+    margin-left: 5px;
+    width: 60px;
+    margin: 0 5px;
+}
+
+.alarm-settings button {
+    height: 30px;
+    margin-left: 5px;
+}

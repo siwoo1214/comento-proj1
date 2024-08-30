@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock</title>
+    <link rel="stylesheet" href="clockstyle.css">
+</head>
+
+<body>
+    <div class="container">
+        <div id="battery-status" class="battery-status"></div>
+        
+        <div class="time-label">시간</div>
+        <div id="time-display" class="time-display"></div>
+        
+        <div class="alarm-container">
+            <div class="alarm-label">알람 현황</div>
+            <div id="alarm-status" class="alarm-status"></div>
+        </div>
+
+        <div class="alarm-settings">
+            <label>알람</label>
+            <input type="number" id="alarm-hour" placeholder="시" min="0" max="23">
+            <input type="number" id="alarm-minute" placeholder="분" min="0" max="59">
+            <input type="number" id="alarm-second" placeholder="초" min="0" max="59">
+            <button id="add-alarm">추가</button>
+            <button id="charge-bettery">충전</button>
+        </div>
+    </div>
+
+    <script>
+        function updateTime() {
+        const now = new Date();
+        const formattedTime = now.toLocaleString('ko-KR', {
+        
+            year: '2-digit',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: false
+            }).replace(/\. /g, '-').replace('.', '');
+        
+            document.getElementById('time-display').textContent = formattedTime;
+        
+            checkAlarms(now);
+        }
+
+        // 전역 변수로 선언하여 updateBattery 함수 내에서 접근 가능하도록 수정
+        let battery = 100;
+        let batteryInterval;
+
+        function updateBattery() {
+            const batteryElement = document.getElementById('battery-status');
+            const timeDisplayElement = document.getElementById('time-display');
+        
+            batteryInterval = setInterval(() => {
+                batteryElement.textContent = `배터리 : ${battery}%`;
+                battery--;
+            
+                if (battery < 0) {
+                    clearInterval(batteryInterval);
+                    batteryElement.textContent = "배터리 : 0%";
+                    timeDisplayElement.style.backgroundColor = "black";
+                    timeDisplayElement.style.color = "black";  
+                }
+            }, 1000);
+        }
+
+        function chargeBattery() {
+            // 배터리를 100%로 복구
+            var battery = 100;
+        
+            // 화면을 다시 보이도록 설정
+            const timeDisplayElement = document.getElementById('time-display');
+            timeDisplayElement.style.backgroundColor = "#e0e0e0";
+            timeDisplayElement.style.color = "#000";
+
+            // 기존 배터리 감소 타이머를 중지하고 새로 시작
+            clearInterval(batteryInterval);
+            updateBattery();
+        }
+
+        // 알람 저장할 배열 생성
+        const alarms = [];
+
+        function addAlarm() {
+            const hour = parseInt(document.getElementById('alarm-hour').value) || 0;
+            const minute = parseInt(document.getElementById('alarm-minute').value) || 0;
+            const second = parseInt(document.getElementById('alarm-second').value) || 0;
+        
+            if (alarms.length < 3 && hour >= 0 && minute >= 0 && second >= 0) {
+                alarms.push({ hour, minute, second });
+                updateAlarmStatus();
+            } else {
+                alert('알람은 최대 3개까지 설정할 수 있습니다.');
+            }
+        
+            document.getElementById('alarm-hour').value = '';
+            document.getElementById('alarm-minute').value = '';
+            document.getElementById('alarm-second').value = '';
+        }
+
+        function updateAlarmStatus() {
+            const alarmStatusElement = document.getElementById('alarm-status');
+            alarmStatusElement.innerHTML = '';
+        
+            alarms.forEach((alarm, index) => {
+                const alarmText = `${alarm.hour.toString().padStart(2, '0')}:${alarm.minute.toString().padStart(2, '0')}:${alarm.second.toString().padStart(2, '0')}`;
+                alarmStatusElement.innerHTML += `<div>알람 ${index + 1}: ${alarmText}</div>`;
+            });
+        }
+
+        function checkAlarms(now) {
+            alarms.forEach(alarm => {
+                if (now.getHours() === alarm.hour && now.getMinutes() === alarm.minute && now.getSeconds() === alarm.second) {
+                    alert(`알람 ${alarm.hour}:${alarm.minute}:${alarm.second}`);
+                }
+            });
+        }
+
+        window.onload = function() {
+            updateTime();
+            updateBattery();
+        
+            setInterval(updateTime, 1000);
+        
+            document.getElementById('add-alarm').addEventListener('click', addAlarm);
+
+            // 충전 버튼에 이벤트 리스너 추가
+            document.getElementById('charge-battery').addEventListener('click', chargeBattery);
+        };
+
+    </script>
+</body>
+</html>
