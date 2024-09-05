@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>siwoo's login page</title>
+    <link rel="stylesheet" href="login.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+        .toggle-password {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="https://img.seoul.co.kr//img/upload/2021/12/16/SSI_20211216162543.jpg" alt="‘지루한 원숭이들의 요트클럽‘(BAYC)의 NFT 컬렉션 중 하나인 ’지루한 원숭이 #3547‘">
+    <div class="wrap">
+        <div class="tab_menu">
+            <ul class="list">
+                <li class="is_on">
+                    <a href="#tab1" class="btn">회원가입</a>
+                    <form action="success.html" id="form1">
+                        <div id="tab1" class="content">
+                            <p id="a">이름</p>
+                            <input type="text" class="form" id="n">
+                            <p id="a">이메일</p>
+                            <input type="text" class="form" placeholder="이메일">
+                            <p id="a">아이디<span><i><small>(4~15자)</small></i></span></p>
+                            <input type="text" class="form" placeholder="아이디">
+                            <p id="a">비밀번호<br><span><i><small>(영소문자와 숫자 포함)</small></i></span></p>
+                            <input type="password" class="form" placeholder="비밀번호">
+                            <button type="button" class="toggle-password">Show</button>
+                        </div>
+                        <div>
+                            <button type="submit" class="submit">전송</button>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="login.js"></script>
+</body>
+
+</html>

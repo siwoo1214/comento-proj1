@@ -1,0 +1,170 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+}
+
+.title {
+    margin-bottom: 20px;
+}
+
+.input-box {
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+    height: 25px;
+    margin-bottom: 10px;
+}
+
+.todo-input {
+    width: 450px;
+    border: 2px solid #000;
+}
+
+.add-btn {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    border: 2px solid #000;
+    background-color: #000;
+    color: #fff;
+    font-size: 25px;
+    line-height: 25px;
+    cursor: pointer;
+}
+
+.add-btn::after {
+    position: absolute;
+    display: inline-block;
+    top: -1px;
+    left: 3px;
+    font-size: 25px;
+    content: "\002B";
+}
+
+.todo-box {
+    width: 500px;
+    height: 400px;
+    padding: 10px;
+    border: 2px solid #000;
+    background-color: #eee;
+}
+
+.new-todo {
+    display: block;
+    position: relative;
+    height: 25px;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    line-height: 25px;
+}
+
+.new-todo input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    cursor: pointer;
+}
+
+.check-mark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25px;
+    height: 25px;
+    border: 2px solid #000;
+    background-color: #fff;
+}
+
+.check {
+    text-decoration: line-through;
+}
+
+.new-todo .check-mark::after {
+    display: none;
+    position: absolute;
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid rgb(5, 4, 4);
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    content: "";
+}
+
+/* 체크표시 */
+.new-todo input:checked ~ .check-mark {
+    background-color: #f7f3f3;
+}
+
+/* 체크된 상태 */
+.new-todo input:checked ~ .check-mark::after {
+    display: block;
+}
+
+.rm-btn::after {
+    position: absolute;
+    right: 5px;
+    top: 0px;
+    display: inline-block;
+    font-size: 30px;
+    cursor: pointer;
+    content: "\00d7";
+}
+
+.rm-btn:hover {
+    color: red;
+}
+
+.priority-select {
+    width: 100px;
+    border: 2px solid #000;
+    background-color: #fff;
+    margin-right: 5px;
+}
+
+/* 우선순위에 따른 스타일 */
+.new-todo.low .check-mark {
+    border-color: green;
+}
+
+.new-todo.medium .check-mark {
+    border-color: orange;
+}
+
+.new-todo.high .check-mark {
+    border-color: red;
+}
+
+/* 우선순위에 따른 배경색 */
+.new-todo.low {
+    border-left: 5px solid green;
+}
+
+.new-todo.medium {
+    border-left: 5px solid orange;
+}
+
+.new-todo.high {
+    border-left: 5px solid red;
+}

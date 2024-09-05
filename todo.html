@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <link rel="stylesheet" href="todostyle.css" />
+</head>
+<body>
+    <h1 class="title">To-Do List</h1>
+    <div class="input-box">
+        <input id="todo" class="todo-input" type="text" placeholder="Enter task..." />
+        <select id="priority" class="priority-select">
+            <option value="low">언젠간</option>
+            <option value="medium">해야함</option>
+            <option value="high">※당장※</option>
+        </select>
+        <button id="addBtn" class="add-btn"></button>
+    </div>
+    <div id="todoBox" class="todo-box"></div>
+    <script src="todojs.js"></script>
+</body>
+</html>
