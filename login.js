@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
         }
 
-        // 아이디 (4 ~ 8자, 영소문자, 숫자)
+        // 아이디 (4 ~ 15자, 영소문자, 숫자)
         if (id == '') {
             alert('아이디를 입력하세요.');
             e.preventDefault();
