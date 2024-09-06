@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var id = document.getElementsByClassName('form')[2].value;
         var pw = document.getElementsByClassName('form')[3].value;
 
-        // 이미 사용된 아이디 목록 (임시 데이터)
+        // 이미 사용된 아이디 목록 (임시 데이터로 중복체크)
         var usedIds = ['user123', 'testid', 'example1'];
 
         // 공통 - 공백 검사

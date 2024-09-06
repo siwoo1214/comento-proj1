@@ -10,16 +10,18 @@ body {
 }
 
 .tab_menu {
-    justify-content: space-between; /* 박스 간 간격 */
+    justify-content: space-between; /* 탭 간 간격 */
 }
 
-a {text-decoration-line: none; color: black;}
+a {
+    color: black;
+}
 
 .wrap {
     display: flex;
     flex-direction: column;
     align-items: baseline;
-    justify-content:center;
+    justify-content: center;
     width: 100%;
 }
 
@@ -47,7 +49,6 @@ li {
 .content {
     display: none;
     align-items: center;
-
 }
 
 /* 입력칸 제목 */
@@ -61,26 +62,33 @@ input {
     height: 25px;
 }
 
-/* 전송 버튼 */
+/* 전송 버튼 (기본적으로 숨김) */
 .submit {
     display: none;
     margin-top: 40px;
 }
 
-/* 선택된 전송 버튼 */
+/* 선택된 탭의 전송 버튼 */
 .is_on .submit {
-    align-items: left;
     padding: 5px 10px;
     display: block;
 }
 
-/*  선택된 탭의 버튼 */
-.is_on .btn{
-    font-weight:bold; 
+/* 선택된 탭의 버튼 스타일 */
+.is_on .btn {
+    font-weight: bold;
     color: rgb(255, 72, 6);
 }
 
-/* 선택된 탭의 내용 */
+/* 선택된 탭의 내용 표시 */
 .is_on .content {
     display: block;
+}
+
+/* 비밀번호 표시/숨기기 버튼 */
+.toggle-password {
+    background-color: thistle;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
 }

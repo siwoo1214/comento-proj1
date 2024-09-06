@@ -4,17 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>siwoo's login page</title>
+    <title>회원가입 페이지</title>
     <link rel="stylesheet" href="login.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
-        .toggle-password {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            margin-left: 10px;
-        }
     </style>
 </head>
 
@@ -24,16 +17,16 @@
         <div class="tab_menu">
             <ul class="list">
                 <li class="is_on">
-                    <a href="#tab1" class="btn">회원가입</a>
+                    <a href="#tab1" class="btn">회원가입</a>  <!-- 탭기능 구현 -->
                     <form action="success.html" id="form1">
                         <div id="tab1" class="content">
                             <p id="a">이름</p>
                             <input type="text" class="form" id="n">
                             <p id="a">이메일</p>
                             <input type="text" class="form" placeholder="이메일">
-                            <p id="a">아이디<span><i><small>(4~15자)</small></i></span></p>
+                            <p id="a">아이디<span><i><small>(영소문자와 숫자가 포함된 4~15자)</small></i></span></p>
                             <input type="text" class="form" placeholder="아이디">
-                            <p id="a">비밀번호<br><span><i><small>(영소문자와 숫자와 특수문자 포함)</small></i></span></p>
+                            <p id="a">비밀번호<br><span><i><small>(영소문자와 숫자와 특수문자가 포함된 4~12자)</small></i></span></p>
                             <input type="password" class="form" placeholder="비밀번호">
                             <button type="button" class="toggle-password">Show</button>
                         </div>
