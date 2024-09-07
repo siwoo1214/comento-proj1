@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // 공통 - 공백 검사
         if (name == '') {
             alert('이름을 입력하세요.');
-            e.preventDefault();
+            e.preventDefault(); 
         } else if (/[a-zA-Zㄱ-ㅎ0-9]/.test(name)) {
             alert('이름은 한글 입력만 가능합니다.');
             e.preventDefault();
