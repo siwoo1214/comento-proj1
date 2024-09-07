@@ -1,9 +1,11 @@
-*{
+/* 기본 스타일 */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* 페이지 레이아웃 */
 body {
     display: flex;
     width: 100vw;
@@ -14,10 +16,12 @@ body {
     background-color: lightgray;
 }
 
+/* 제목 */
 .title {
     margin-bottom: 20px;
 }
 
+/* 입력 박스 */
 .input-box {
     display: flex;
     justify-content: space-between;
@@ -26,11 +30,21 @@ body {
     margin-bottom: 10px;
 }
 
+/* 입력 필드 */
 .todo-input {
     width: 450px;
     border: 2px solid #000;
 }
 
+/* 우선순위 선택 */
+.priority-select {
+    width: 100px;
+    border: 2px solid #000;
+    background-color: #fff;
+    margin-right: 5px;
+}
+
+/* 추가 버튼 */
 .add-btn {
     position: relative;
     width: 25px;
@@ -43,15 +57,17 @@ body {
     cursor: pointer;
 }
 
+/* 추가 버튼의 + 기호 */
 .add-btn::after {
     position: absolute;
     display: inline-block;
     top: -1px;
-    left: 3px;
+    left: 2px;
     font-size: 25px;
     content: "\002B";
 }
 
+/* 할 일 박스 */
 .todo-box {
     width: 500px;
     height: 400px;
@@ -60,6 +76,7 @@ body {
     background-color: #eee;
 }
 
+/* 할 일 항목 */
 .new-todo {
     display: block;
     position: relative;
@@ -68,13 +85,11 @@ body {
     margin-bottom: 12px;
     cursor: pointer;
     font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
     line-height: 25px;
 }
 
+/* 숨겨진 체크박스 */
 .new-todo input {
     position: absolute;
     opacity: 0;
@@ -83,6 +98,7 @@ body {
     cursor: pointer;
 }
 
+/* 체크 마크 */
 .check-mark {
     position: absolute;
     top: 0;
@@ -93,10 +109,7 @@ body {
     background-color: #fff;
 }
 
-.check {
-    text-decoration: line-through;
-}
-
+/* 체크 마크의 체크 표시 */
 .new-todo .check-mark::after {
     display: none;
     position: absolute;
@@ -106,41 +119,44 @@ body {
     height: 10px;
     border: solid rgb(5, 4, 4);
     border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
     transform: rotate(45deg);
     content: "";
 }
 
-/* 체크표시 */
+/* 체크된 상태의 체크 마크 배경색*/
 .new-todo input:checked ~ .check-mark {
     background-color: #f7f3f3;
 }
 
-/* 체크된 상태 */
+/* 체크된 상태의 체크 표시 */
 .new-todo input:checked ~ .check-mark::after {
     display: block;
 }
 
-.rm-btn::after {
+/* 체크된 상태의 텍스트 스타일 */
+.check {
+    text-decoration: line-through;
+}
+
+/* 삭제 버튼 */
+.rm-btn {
     position: absolute;
     right: 5px;
-    top: 0px;
+    top: 0;
+    border: #eee;
     display: inline-block;
     font-size: 30px;
     cursor: pointer;
+}
+
+/* 삭제 버튼의 × 기호 */
+.rm-btn::after {
     content: "\00d7";
 }
 
+/* 삭제 버튼의 호버 상태 */
 .rm-btn:hover {
     color: red;
-}
-
-.priority-select {
-    width: 100px;
-    border: 2px solid #000;
-    background-color: #fff;
-    margin-right: 5px;
 }
 
 /* 우선순위에 따른 스타일 */

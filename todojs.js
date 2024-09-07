@@ -12,6 +12,7 @@ addBtn.addEventListener("click", () => {
 
     newTodo.className = `new-todo ${selectedPriority}`; // 우선순위 클래스 추가
     newTodo.innerText = todo.value;
+    
     checkBox.type = "checkBox";
     checkMark.className = "check-mark";
     rmBtn.className = "rm-btn";

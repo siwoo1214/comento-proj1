@@ -15,15 +15,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 탭 기능
     const tab = document.querySelectorAll('.tab_menu .list li');
-
-    for (let i = 0; i < tab.length; i++) {
-        tab[i].querySelector('.btn').addEventListener('click', function(e) {
+    tab.forEach((tabItem) => {
+        tabItem.querySelector('.btn').addEventListener('click', function(e) {
             e.preventDefault();
-            for (let j = 0; j < tab.length; j++) {
-                tab[j].classList.remove('is_on');
-            }
-            this.parentNode.classList.add('is_on');
+            tab.forEach((tab) => tab.classList.remove('is_on'));
+            tabItem.classList.add('is_on');
         });
+    });
+
+    // 유효성 검사 함수
+    function validateField(value, emptyMessage, regex = null, formatMessage = '') {
+        if (value === '') {
+            alert(emptyMessage);
+            return false;
+        }
+        if (regex && !regex.test(value)) {
+            alert(formatMessage);
+            return false;
+        }
+        return true;
     }
 
     // 유효성 검사 및 아이디 중복 체크
@@ -36,77 +46,34 @@ document.addEventListener('DOMContentLoaded', function() {
         // 이미 사용된 아이디 목록 (임시 데이터로 중복체크)
         var usedIds = ['user123', 'testid', 'example1'];
 
-        // 공통 - 공백 검사
-        if (name == '') {
-            alert('이름을 입력하세요.');
-            e.preventDefault(); 
-        } else if (/[a-zA-Zㄱ-ㅎ0-9]/.test(name)) {
-            alert('이름은 한글 입력만 가능합니다.');
+        // 이름 유효성 검사 (공백 및 한글만 허용, 길이 2~5자)
+        if (!validateField(name, '이름을 입력하세요.', /^[ㄱ-ㅎ가-힣]+$/, '이름은 한글만 가능합니다.') || name.length < 2 || name.length > 5) {
+            alert('이름은 2자에서 5자 사이여야 합니다.');
             e.preventDefault();
+            return;
         }
 
-        // 이름 길이 2 ~ 5자 제한
-        if (name.length < 2 || name.length > 5) {
-            alert('이름 제한 길이를 넘었습니다.');
+        // 이메일 유효성 검사 (공백, 형식 체크)
+        if (!validateField(email, '이메일을 입력하세요.', /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/, '올바른 이메일 형식이 아닙니다.')) {
             e.preventDefault();
+            return;
         }
 
-        // 이메일 (이메일 형식)
-        if (email == '') {
-            alert('이메일을 입력하세요.');
+        // 아이디 유효성 검사 (공백, 영소문자 및 숫자만 허용, 길이 4~15자, 중복 체크)
+        if (!validateField(id, '아이디를 입력하세요.', /^[a-z0-9]+$/, '아이디는 영소문자와 숫자만 가능합니다.') || id.length < 4 || id.length > 15 || usedIds.includes(id)) {
+            alert(usedIds.includes(id) ? '이미 사용 중인 아이디입니다.' : '아이디는 4자에서 15자 사이여야 합니다.');
             e.preventDefault();
-        } else if (/[A-Z가-힣ㄱ-ㅎ]/.test(email)) {
-            alert('이메일은 영소문자와 숫자만 가능합니다.');
-            e.preventDefault();
-        } else if (/\S+@\S+\.\S+/.test(email) == false) {
-            alert('이메일 형식이 아닙니다.');
-            e.preventDefault();
+            return;
         }
 
-        // 아이디 (4 ~ 15자, 영소문자, 숫자)
-        if (id == '') {
-            alert('아이디를 입력하세요.');
+        // 비밀번호 유효성 검사 (공백, 영소문자, 숫자, 특수문자 포함, 길이 6~12자)
+        var hasNumber = /\d/.test(pw);
+        var hasLowerCase = /[a-z]/.test(pw);
+        var hasSpecialChar = /[!@#\$%\^\&*\)\(+=._-]/.test(pw);
+        if (!validateField(pw, '비밀번호를 입력하세요.') || pw.length < 6 || pw.length > 12 || !hasNumber || !hasLowerCase || !hasSpecialChar) {
+            alert('비밀번호는 6자에서 12자 사이여야 하며, 영소문자, 숫자, 특수문자를 포함해야 합니다.');
             e.preventDefault();
-        } else if (/[A-Z가-힣ㄱ-ㅎ]/.test(id)) {
-            alert('아이디는 영소문자와 숫자만 가능합니다.');
-            e.preventDefault();
-        }
-
-        // 아이디 길이 4 ~ 15자 제한
-        if (id.length < 4 || id.length > 15) {
-            alert('아이디 제한 길이를 넘었습니다.');
-            e.preventDefault();
-        }
-
-        // 아이디 중복 체크
-        if (usedIds.includes(id)) {
-            alert('이미 사용 중인 아이디입니다. 다른 아이디를 입력하세요.');
-            e.preventDefault();
-        }
-
-        // 비밀번호 (6 ~ 12자, 영소문자, 숫자, 특수문자 포함)
-        if (pw == '') {
-            alert('비밀번호를 입력하세요.');
-            e.preventDefault();
-        } else if (/[A-Z가-힣ㄱ-ㅎ]/.test(pw)) {
-            alert('비밀번호는 영소문자와 숫자만 가능합니다.');
-            e.preventDefault();
-        }
-
-        // 비밀번호 길이 6 ~ 12자 제한
-        if (pw.length < 6 || pw.length > 12) {
-            alert('비밀번호 제한 길이를 넘었습니다.');
-            e.preventDefault();
-        }
-
-        // 비밀번호 생성 기준: 숫자, 영문 소문자, 특수문자 포함 여부 확인
-        var hasNumber = /\d/.test(pw); // 숫자 포함 여부
-        var hasLowerCase = /[a-z]/.test(pw); // 소문자 포함 여부
-        var hasSpecialChar = /[!@#\$%\^\&*\)\(+=._-]/.test(pw); // 특수문자 포함 여부
-
-        if (!hasNumber || !hasLowerCase || !hasSpecialChar) {
-            alert('비밀번호는 숫자, 영소문자, 특수문자를 포함해야 합니다.');
-            e.preventDefault();
+            return;
         }
     });
 });
